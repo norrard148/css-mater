@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        width: 1800px;
+        height: 2000px;
+        background-color: yellow;
+        display: grid;
+        grid-template-areas: 
+        ' 300px 300px 300px 300px'
+        ' 300px 300px 300px 300px'
+        ' 300px 300px 300px 300px'
+        ' 300px 300px 300px 300px'; /* 아무렇게나 바꿔보자 */
+        grid-gap: 20px;
+        padding:20px;
+    }
+    .img  {
+        background-color: black;
+        text-align: center;
+        font-size: 120px;
+   
+    }
+</style>
+<body>
+<div class="container">
+    <div class="img" style="grid-area: 1/1/3/3;background-color: red;">a</div> <!-- f12로 확인해보면 이친구의 넓이는 500px인데, 그 이유는 width 값보다 flex 속성값을 우선으로 따르기 때문-->
+    <div class="img" style="grid-area: 3/3/span 1/span 2;background-color:blue">b</div>
+    <div class="img" style="grid-area:3/1/4/3;background-color:aqua">c</div>
+    <div class="img" style="grid-area:1/3/2/5;background-color:grey;">d</div> 
+    <div class="img" style="grid-area:2/3/3/5;background-color:blueviolet">e</div>
+    <div class="img" style="background-color: red;">f</div>
+    <div class="img" style="background-color: grey;">g</div>
+    
+</div>
+
+</body>
+</html>

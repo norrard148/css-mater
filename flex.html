@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        width: 1800px;
+        height: 2000px;
+        background-color: yellow;
+        display: flex;
+        /*여기서부터*/
+        flex-direction: row; /*row|row-reverse|column|column-reverse|initial|inherit*/
+        flex-wrap: wrap; /*wrap|unwrap*/
+        justify-content: space-around; /*stretch|center|flex-start|flex-end|space-between|space-around|initial|inherit*/
+        align-items:center; /*stretch|center|flex-start|flex-end|space-between|space-around|initial|inherit*/
+        align-content: center; /*stretch|center|flex-start|flex-end|space-between|space-around|initial|inherit*/
+        /*여기까지 어무렇게나 바꿔보면서 변화를 살펴보자.*/
+    }
+    .img  {
+        background-color: black;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="img" style="width: 100px; height: 100px; flex: 0 0 500px;">a</div> <!-- f12로 확인해보면 이친구의 넓이는 500px인데, 그 이유는 width 값보다 flex 속성값을 우선으로 따르기 때문-->
+    <div class="img" style="width: 500px; height: 300px;">b</div>
+    <div class="img" style="width: 500px; height: 100px;">c</div>
+    <div class="img" style="width: 500px; height: 300px;">d</div> 
+    <div class="img" style="width: 500px; height: 200px;">e</div>
+    <div class="img" style="width: 500px; height: 400px;">f</div>
+    <div class="img" style="width: 500px; height: 200px;">g</div>
+    
+</div>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing:border-box;
+    }
+    .container {
+        width: 2000px;
+        height: 2000px;
+        background-color: yellow;
+        display: grid;
+        grid-template-areas:
+        'auto auto auto';
+        padding: 0;
+        margin: 0;
+    }
+    .col  {
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        height: 2000px;
+        align-items: center;
+        margin: 0 auto;
+        
+    }
+    .row {
+        background-color: white;
+      
+     
+    }
+    @media screen and (min-width: 1000px) {
+       .container { grid-template-areas:
+        'auto auto';
+        height: 4500px;
+        width: 1300px;
+    }
+    .col {
+        width: 450px;
+    }
+        .row {
+            width: 400px;
+        }
+    }
+    @media screen and (min-width: 1500px) {
+        .container { grid-template-areas:
+         'auto auto auto';
+         height: 2000px;
+         width: 2000px; 
+     }
+     .col {
+         width: 550px;
+     }
+     .row {
+        width: 450px;
+     }
+     }
+</style>
+<body>
+<div class="container">
+    <div class="col">
+            <div class="row" style="margin-top: 50px;height: 300px;">   </div>
+            <div class="row" style="margin-top: 50px;height: 100px;">   </div>
+            <div class="row" style="margin-top: 50px;height: 500px;">   </div>
+    </div>
+    <div class="col">
+            <div class="row" style="margin-top: 50px;height: 700px;">   </div>
+            <div class="row" style="margin-top: 50px;height: 300px;">   </div>
+            <div class="row" style="margin-top: 50px;height: 100px;">   </div>
+    </div>
+    <div class="col">
+            <div class="row" style="margin-top: 50px;height: 500px;">   </div>
+            <div class="row" style="margin-top: 50px;height: 200px;">   </div>
+            <div class="row" style="margin-top: 50px;height: 400px;">   </div>
+    </div>
+   
+
+    
+</div>
+
+</body>
+</html>
