@@ -16,7 +16,7 @@
     body {
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
+        align-items: center;
         background-color: rgb(250, 250, 250);
     }
     .nav {
@@ -83,14 +83,23 @@
     .button:active {
         background-color: rgb(245, 245, 245);
     }
+    .inp {
 
+        width:400px;
+        height: 30px;
+    }
+    .inp:focus {
+        transition: width 0.5s ease-in 0s;
+        width: 600px;
+        
+    }
 </style>
 <body>
     <div class="nav">
             <h1 class="head">Main</h1>
             <h1 class="head">Introduction</h1>
             <h1 class="head">Members</h1>
-            <h1 class="head">Keli</h1>
+            <h1 class="head">Photography</h1>
         <div class="button">
             <h1>Click!</h1>
             <ul class="menu">
@@ -106,6 +115,8 @@
        
       
     </div>
+    
+        <input type="text" class="inp">
     
     <script>
         var onoff = false;
