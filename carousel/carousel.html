@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+    body {
+        width: 1900px;
+        height: 1000px;
+    }
+</style>
+<body>
+    <div style="width:300px;height: 300px;border:2px solid black;overflow:hidden;position:relative;top: 400px;margin:0 auto;">
+        <ul class="box" style="position:relative;width:1800px;height:300px;display:flex;flex-direction:row;">
+            <li style="width: 300px; height: 300pc;background-color: yellow"></li>
+            <li style="width: 300px; height: 300pc;background-color: blue"></li>
+            <li style="width: 300px; height: 300pc;background-color: black"></li>
+            <li style="width: 300px; height: 300pc;background-color: grey"></li>
+            <li style="width: 300px; height: 300pc;background-color: red"></li>
+            <li style="width: 300px; height: 300pc;background-color: blueviolet"></li>
+
+        </ul>
+    </div>
+    <h1 class="le" style="position:absolute;left: 300px;top: 500px;  cursor: pointer;">이전으로</h1>
+    <h1 class="ri" style="position:absolute;left: 1500px;top: 500px;  cursor: pointer;">다음으로</h1>
+    <ul class="pagi" style="position:absolute;top:700px;left:600px;width:500px;height:300px;display:flex;flex-direction:row;list-style:none;">
+        <li class="a" style="margin:50px;width:50px; cursor: pointer;">1</li>
+        <li class="a" style="margin:50px;width:50px; cursor: pointer;">2</li>
+        <li class="a" style="margin:50px;width:50px; cursor: pointer;">3</li>
+        <li class="a" style="margin:50px;width:50px; cursor: pointer;">4</li>
+        <li class="a" style="margin:50px;width:50px; cursor: pointer;">5</li>
+        <li class="a" style="margin:50px;width:50px; cursor: pointer;">6</li>
+    </ul>
+    <script>
+        var index = 0;
+
+        $(".ri").click(function() {
+            if (index < 5) {
+                index +=1;
+                $(".box").animate({left: "-=300"}, 1000);
+            }
+        
+        })
+
+        $(".le").click(function() {
+            if (index > 0) {
+                index -=1;
+                $(".box").animate({left: "+=300"}, 1000);
+            }
+        
+        })
+
+        $(".pagi").on("click", "li", function() {
+            $(".box").animate({Left: "-=300"}, 1000);
+
+        });
+
+        $(".a").click(function () {
+            var ab = $(this).text();
+            var bc = (ab-1)*300;
+            index = ab-1;
+            $(".box").animate({left: -bc}, 1000);
+        })
+    </script>
+</body>
+</html>
