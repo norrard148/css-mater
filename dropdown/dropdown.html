@@ -83,17 +83,7 @@
     .button:active {
         background-color: rgb(245, 245, 245);
     }
-    .inp {
-
-        width:400px;
-        height: 30px;
-        transition: width 0.5s ease-in 0s;
-    }
-    .inp:focus {
-        transition: width 0.5s ease-in 0s;
-        width: 600px;
-        
-    }
+   
 </style>
 <body>
     <div class="nav">
@@ -117,18 +107,17 @@
       
     </div>
     
-        <input type="text" class="inp">
     
     <script>
         var onoff = false;
         $(".button").click(function(event) {
             event.stopPropagation();
-          
             $("ul").toggle().css({'visibility':'visible'});
          
         })
-        $(document).click(function(){
+        $(document).click(function(event){
             $("ul").css({'visibility':'hidden'});
+            event.stopPropagation();    
         });
     </script>
 </body>
