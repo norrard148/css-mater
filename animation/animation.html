@@ -76,7 +76,7 @@
     </div>
   
     <script>
-        $(".min").mousedown(function(e) {
+            document.onmousemove=function(e) {
                 var mousecoords = getMousePos(e);
                 event = event || windodw.event;
                
@@ -91,34 +91,13 @@
                     $(".max").css({'transform':'translateX(0px)'});
                 }
             
-            
-        });
+            };
 
-      
-           function getMousePos(e) {
+            function getMousePos(e) {
             return {x:e.clientX,y:e.clientY};
-        }
+            };
+
     </script>    
-    <a id="moo" href=''> </a>
 
-<script type="text/javascript">
-    var moo = document.getElementById('moo');
-
-    function handler(event) {
-        event = event || window.event;
-
-        if (event.stopPropagation)
-            event.stopPropagation();
-
-        event.cancelBubble = true;
-        return false;
-    }
-
-    moo.innerHTML = 'right-click here';
-
-    moo.onclick = handler;
-    moo.onmousedown = handler;
-    moo.onmouseup = handler;
-</script>
 </body>
 </html>
