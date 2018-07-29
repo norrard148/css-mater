@@ -45,16 +45,19 @@
     </ul>
     <h1 style="font-size:30px;font-weight:200;margin-left: 100px;">사진을 눌러서 드래그 해보세요. 그리고 123456을 눌러보세요.</h1>
     <script>
+        //여기서부터
         var index = 0;
         var ismousedown = false;
-    
-  
+        function setpegi () {
+            $(".pagi .a").removeClass("gg");
+            $(`.pagi :nth-child(${index+1})`).addClass("gg");
+        }
+
         $(".ri").click(function(event) {
             if (index < 5) {
                 index +=1;
                 $(".box").animate({left: "-=300"}, 1000);
-                $(".pagi .a").removeClass("gg");
-                $(`.pagi :nth-child(${index+1})`).addClass("gg");
+                setpegi();
                 event.stopPropagation();
             }
         
@@ -64,8 +67,7 @@
             if (index > 0) {
                 index -=1;
                 $(".box").animate({left: "+=300"}, 1000);
-                $(".pagi .a").removeClass("gg");
-                $(`.pagi :nth-child(${index+1})`).addClass("gg");
+                setpegi();
                 event.stopPropagation();
             }
         
@@ -87,33 +89,52 @@
             event.stopPropagation();
         })
 
+        //여기까지가 주된 carousel 내용
+
+        //여기아래서부터는 드래그로 화면 슬라이딩 기능 추가
+        
         var clickX;
-        var clickboxX;
-        var carouselclickmove = 0;
-        $(window).bind('mouseup', function(e){
-            ismousedown = false;
-            $(".box").css({'transform':`translateX(-${carouselclickmove}px)`});
-        });
+        var carouselclickmove;
+
         $(".box").bind('mousedown', function(e){
             ismousedown = true;
             clickX = e.pageX;
             clickboxX = $(".box").offset().left;
         });
+        
+        $(window).bind('mouseup', function(e){
+            if (ismousedown) {
+                ismousedown = false;
+                if (carouselclickmove <=-150) {
+                    index = index + 1;
+                    setpegi();
+                    $(".box").animate({left: `${-index*300}`}, 500);
+                    
+                } if (carouselclickmove >=150) {
+                    index = index - 1;
+                    setpegi();
+                    $(".box").animate({left: `${-index*300}`}, 500);
+                }else {
+                    $(".box").animate({left: `${-index*300}`}, 500);
+                }
+            }
+        });
+
         $(window).bind('mousemove',function(e){ 
             if (ismousedown) {
-                var x = e.pageX;
-                var carouselclickmove = x-clickX;
+                carouselclickmove =e.pageX-clickX;
+                var c = -index*300+carouselclickmove;
                 if (index == 0) {
                    if (carouselclickmove <= 0) {
-                    $(".box").css({'transform':`translateX(${carouselclickmove}px)`});
-                   } 
+                    $(".box").css({left:`${c}px`});  
+                    } 
                 } 
                 else if (index > 0 && index !=5) {
-                    $(".box").css({'transform':`translateX(${carouselclickmove}px)`});
+                    $(".box").css({left:`${c}px`});  
                 } 
                 else if (index == 5) {
                     if (carouselclickmove > 0) {
-                        $(".box").css({'transform':`translateX(${carouselclickmove}px)`});
+                        $(".box").css({left:`${c}px`});  
                     } 
                 }
             }
