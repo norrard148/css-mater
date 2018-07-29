@@ -16,59 +16,111 @@
         width: 1900px;
         height: 1000px;
     }
+    .gg {
+        background-color: grey;
+    }
+    
 </style>
 <body>
-    <div style="width:300px;height: 300px;border:2px solid black;overflow:hidden;position:relative;top: 400px;margin:0 auto;">
-        <ul class="box" style="position:relative;width:1800px;height:300px;display:flex;flex-direction:row;list-style:none;">
-            <li style="width: 300px; height: 300pc;background-color: yellow"></li>
-            <li style="width: 300px; height: 300pc;background-color: blue"></li>
-            <li style="width: 300px; height: 300pc;background-color: black"></li>
-            <li style="width: 300px; height: 300pc;background-color: grey"></li>
-            <li style="width: 300px; height: 300pc;background-color: red"></li>
-            <li style="width: 300px; height: 300pc;background-color: blueviolet"></li>
+    <div class="carousel" id="myDIV" style="width:300px;height: 300px;border:2px solid black;overflow:hidden;position:relative;top: 400px;margin:0 auto;">
+        <ul class="box"  style="position:relative;width:1800px;height:300px;display:flex;justify-content:row;list-style:none;">
+            <li style="width: 300px; height: 300px;background-color: yellow"></li>
+            <li style="width: 300px; height: 300px;background-color: blue"></li>
+            <li style="width: 300px; height: 300px;background-color: black"></li>
+            <li style="width: 300px; height: 300px;background-color: grey"></li>
+            <li style="width: 300px; height: 300px;background-color: red"></li>
+            <li style="width: 300px; height: 300px;background-color: blueviolet"></li>
 
         </ul>
     </div>
     <h1 class="le" style="position:absolute;left: 300px;top: 500px;  cursor: pointer;">이전으로</h1>
     <h1 class="ri" style="position:absolute;left: 1500px;top: 500px;  cursor: pointer;">다음으로</h1>
-    <ul class="pagi" style="position:absolute;top:700px;left:600px;width:500px;height:300px;display:flex;flex-direction:row;list-style:none;">
-        <li class="a" style="margin:50px;width:50px; cursor: pointer;">1</li>
-        <li class="a" style="margin:50px;width:50px; cursor: pointer;">2</li>
-        <li class="a" style="margin:50px;width:50px; cursor: pointer;">3</li>
-        <li class="a" style="margin:50px;width:50px; cursor: pointer;">4</li>
-        <li class="a" style="margin:50px;width:50px; cursor: pointer;">5</li>
-        <li class="a" style="margin:50px;width:50px; cursor: pointer;">6</li>
+    <ul class="pagi" style="position:absolute;top:700px;left:600px;width:500px;height:500px;display:flex;flex-direction:row;list-style:none;">
+        <li class="a gg" style="margin:50px;width:50px;cursor: pointer;height:30px;">1</li>
+        <li class="a" style="margin:50px;width:50px;cursor: pointer;height:30px;">2</li>
+        <li class="a" style="margin:50px;width:50px;cursor: pointer;height:30px;">3</li>
+        <li class="a" style="margin:50px;width:50px;cursor: pointer;height:30px;">4</li>
+        <li class="a" style="margin:50px;width:50px;cursor: pointer;height:30px;">5</li>
+        <li class="a" style="margin:50px;width:50px;cursor: pointer;height:30px;">6</li>
     </ul>
+    <h1 style="font-size:30px;font-weight:200;margin-left: 100px;">사진을 눌러서 드래그 해보세요. 그리고 123456을 눌러보세요.</h1>
     <script>
         var index = 0;
-
-        $(".ri").click(function() {
+        var ismousedown = false;
+    
+  
+        $(".ri").click(function(event) {
             if (index < 5) {
                 index +=1;
                 $(".box").animate({left: "-=300"}, 1000);
+                $(".pagi .a").removeClass("gg");
+                $(`.pagi :nth-child(${index+1})`).addClass("gg");
+                event.stopPropagation();
             }
         
         })
 
-        $(".le").click(function() {
+        $(".le").click(function(event) {
             if (index > 0) {
                 index -=1;
                 $(".box").animate({left: "+=300"}, 1000);
+                $(".pagi .a").removeClass("gg");
+                $(`.pagi :nth-child(${index+1})`).addClass("gg");
+                event.stopPropagation();
             }
         
         })
 
-        $(".pagi").on("click", "li", function() {
+        $(".pagi").on("click", "li", function(event) {
             $(".box").animate({Left: "-=300"}, 1000);
-
+            event.stopPropagation();
+          
         });
 
-        $(".a").click(function () {
+        $(".a").click(function (event) {
             var ab = $(this).text();
             var bc = (ab-1)*300;
             index = ab-1;
             $(".box").animate({left: -bc}, 1000);
+            $(".pagi .a").removeClass("gg");
+            $(this).addClass("gg");
+            event.stopPropagation();
         })
+
+        var clickX;
+        var clickboxX;
+        var carouselclickmove = 0;
+        $(window).bind('mouseup', function(e){
+            ismousedown = false;
+            $(".box").css({'transform':`translateX(-${carouselclickmove}px)`});
+        });
+        $(".box").bind('mousedown', function(e){
+            ismousedown = true;
+            clickX = e.pageX;
+            clickboxX = $(".box").offset().left;
+        });
+        $(window).bind('mousemove',function(e){ 
+            if (ismousedown) {
+                var x = e.pageX;
+                var carouselclickmove = x-clickX;
+                if (index == 0) {
+                   if (carouselclickmove <= 0) {
+                    $(".box").css({'transform':`translateX(${carouselclickmove}px)`});
+                   } 
+                } 
+                else if (index > 0 && index !=5) {
+                    $(".box").css({'transform':`translateX(${carouselclickmove}px)`});
+                } 
+                else if (index == 5) {
+                    if (carouselclickmove > 0) {
+                        $(".box").css({'transform':`translateX(${carouselclickmove}px)`});
+                    } 
+                }
+            }
+        });
+
     </script>
+    
+
 </body>
 </html>
