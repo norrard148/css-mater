@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<style>
+    .content {
+        width: 500px;
+        height: 650px;
+        background-color: rgb(255, 255, 255);
+        border-radius: 7px;
+        border: 1px solid rgb(231, 231, 231);
+        margin-bottom: 50px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    body {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgb(241, 241, 241);
+    }
+    img {
+        width: 100%;
+        height: auto;
+        
+    }
+</style>
+<body>
+    <div class="content">
+        <img src="http://cphoto.asiae.co.kr/listimglink/6/2017081710452545750_3.jpg">
+        YOUNG AGE
+    </div>
+    <div class="content">
+            <img src="http://cphoto.asiae.co.kr/listimglink/6/2017081710452545750_3.jpg">
+        OLD AGE
+    </div>
+    <div class="content">
+            <img src="http://cphoto.asiae.co.kr/listimglink/6/2017081710452545750_3.jpg">
+        AWESOME AGE
+    </div>
+
+
+</body>
+<script>
+    var img = [
+        {
+            name:"Jang",
+            age:34
+        },
+        {
+            name:"Young",
+            age:40
+        },
+        {
+            name:"Jae",
+            age:19
+        },
+        {
+            name:"Qute",
+            age:20
+        },
+        {
+            name:"Guy",
+            age:30
+        }
+
+        
+    ]
+    var count = 0;
+
+    $(window).scroll(function() {
+        if ($(window).scrollTop() == $(document).height() - $(window).height()){
+            if (img[count] != undefined) {
+                $('<div class="content">' + '<img src="http://cphoto.asiae.co.kr/listimglink/6/2017081710452545750_3.jpg">' + img[count].name +img[count].age + '</div>').appendTo("body");
+                
+                console.log(img[count].name);
+                count +=1;
+            }
+            
+
+        };
+       
+    });
+
+   
+</script>
+</html>
