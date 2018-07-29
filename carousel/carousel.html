@@ -18,6 +18,7 @@
     }
     .gg {
         background-color: grey;
+        color: white;
     }
     
 </style>
@@ -36,12 +37,12 @@
     <h1 class="le" style="position:absolute;left: 300px;top: 500px;  cursor: pointer;">이전으로</h1>
     <h1 class="ri" style="position:absolute;left: 1500px;top: 500px;  cursor: pointer;">다음으로</h1>
     <ul class="pagi" style="position:absolute;top:700px;left:600px;width:500px;height:500px;display:flex;flex-direction:row;list-style:none;">
-        <li class="a gg" style="margin:50px;width:50px;cursor: pointer;height:30px;">1</li>
-        <li class="a" style="margin:50px;width:50px;cursor: pointer;height:30px;">2</li>
-        <li class="a" style="margin:50px;width:50px;cursor: pointer;height:30px;">3</li>
-        <li class="a" style="margin:50px;width:50px;cursor: pointer;height:30px;">4</li>
-        <li class="a" style="margin:50px;width:50px;cursor: pointer;height:30px;">5</li>
-        <li class="a" style="margin:50px;width:50px;cursor: pointer;height:30px;">6</li>
+        <li class="a gg" style="margin:50px;width:70px;cursor: pointer;height:30px;display:block;">1</li>
+        <li class="a" style="margin:50px;width:70px;cursor: pointer;height:30px;">2</li>
+        <li class="a" style="margin:50px;width:70px;cursor: pointer;height:30px;">3</li>
+        <li class="a" style="margin:50px;width:70px;cursor: pointer;height:30px;">4</li>
+        <li class="a" style="margin:50px;width:70px;cursor: pointer;height:30px;">5</li>
+        <li class="a" style="margin:50px;width:70px;cursor: pointer;height:30px;">6</li>
     </ul>
     <h1 style="font-size:30px;font-weight:200;margin-left: 100px;">사진을 눌러서 드래그 해보세요. 그리고 123456을 눌러보세요.</h1>
     <script>
@@ -91,7 +92,7 @@
 
         //여기까지가 주된 carousel 내용
 
-        //여기아래서부터는 드래그로 화면 슬라이딩 기능 추가
+        //여기서부터  
         
         var clickX;
         var carouselclickmove;
@@ -139,7 +140,7 @@
                 }
             }
         });
-
+        //여기까지는 드래그 기능 추가
     </script>
     
 
