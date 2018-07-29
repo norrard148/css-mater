@@ -106,16 +106,16 @@
         $(window).bind('mouseup', function(e){
             if (ismousedown) {
                 ismousedown = false;
-                if (carouselclickmove <=-150) {
+                if (carouselclickmove <=-150 && index != 5) {
                     index = index + 1;
                     setpegi();
                     $(".box").animate({left: `${-index*300}`}, 500);
                     
-                } if (carouselclickmove >=150) {
+                } if (carouselclickmove >=150 && index != 0) {
                     index = index - 1;
                     setpegi();
                     $(".box").animate({left: `${-index*300}`}, 500);
-                }else {
+                } else {
                     $(".box").animate({left: `${-index*300}`}, 500);
                 }
             }
@@ -134,7 +134,7 @@
                     $(".box").css({left:`${c}px`});  
                 } 
                 else if (index == 5) {
-                    if (carouselclickmove > 0) {
+                    if (carouselclickmove >= 0) {
                         $(".box").css({left:`${c}px`});  
                     } 
                 }
