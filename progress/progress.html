@@ -16,11 +16,16 @@
     body, html {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
         height: 100%;
+       
+    }
+    body {
+        padding-top: 300px;
     }
     .progress {
+        
+        top: 500px;
         width: 1000px;
         height: 25px;
         border-radius: 6px;
@@ -35,7 +40,7 @@
     .button {
         width: 220px;
         height: 40px;
-        background-color: rgb(54, 32, 107);
+        background-color: rgb(0, 0, 0);
         border: 1px solid grey;
         border-radius: 5px;
         display: flex;
@@ -45,6 +50,15 @@
         margin-bottom: 20px;
         color:white;
     }
+    .in {
+        margin-top: 20px;
+    }
+    #loading-image {
+        display: none;
+        margin-top: 30px;
+        width: 50px;
+        height: 50px;
+    }
 </style>
 <body>
     <div class="button">Click To Charge Battery!</div>
@@ -53,6 +67,9 @@
 
         </div>
     </div>
+      
+    <h1 class="in"></h1>
+    <img style="top: 400px" id="loading-image" src="5.gif" alt="Loading..." /> 
 </body>
 <script>
     var index=0;
@@ -63,14 +80,29 @@
         if (charging === false) {
             charging = true;
             console.log("Start charging");
+         
+            $(".in").html("Start Charging");
+            $("#loading-image").css({'display':'block'});
             charging_machine = setInterval(function () {
-                index +=2;
-                $(".progress-situation").css({"width": `${index}px`});
+                if (index <1000) {
+                    index +=2;
+                    $(".progress-situation").css({"width": `${index}px`});
+                } else {
+                    $(".in").html("Charged!");
+                    $("#loading-image").css({'display':'none'});
+                    clearInterval(charging_machine);
+                   
+                }
             }, 50);
         } else {
-            charging = false;
-            console.log("Stop charging!")
-            clearInterval(charging_machine);
+            if (index <1000) {
+                charging = false;
+                console.log("Stop charging!")
+                $("#loading-image").css({'display':'none'});
+                $(".in").html("Stop Charging");
+                clearInterval(charging_machine);
+            }
+          
         }
         
     });
