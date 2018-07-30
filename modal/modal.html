@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-weight: 200;
+        color: black;
+    }
+    html {
+        height: 100%;
+        width: 100%;
+
+    }
+    body {
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        flex-direction: column;
+ 
+        align-items: center;
+    }
+    .button {
+        width: 80px;
+        height: 40px;
+        margin-top: 300px;
+        border: 1px solid rgb(175, 175, 175);
+        border-radius: 4px;
+        font-size: 27px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: rgb(71, 71, 71);
+        cursor: pointer;
+    }
+   .modal-box {
+       width: 100%;
+       height: 100%;
+       display:none;
+       z-index: 100;
+       background-color: rgba(34, 34, 34, 0.438);
+       position:fixed;
+       top: 0;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+   }
+   .modal {
+       width: 800px;
+       height: 100px;
+       background-color: white;
+       border-radius: 5px;
+       border: 1px solid rgb(238, 238, 238);
+       padding: 10px;
+
+   }
+   img {
+       margin-top: 50px;
+       width: 500px;
+       height: auto;
+       border-radius: 5px;
+   }
+</style>
+<body>
+   <div class="button">click</div>
+   <img src="https://wallpaper-house.com/data/out/7/wallpaper2you_191366.jpg" alt="">
+   <img src="https://wallpaper-house.com/data/out/7/wallpaper2you_191366.jpg" alt="">
+   <img src="https://wallpaper-house.com/data/out/7/wallpaper2you_191366.jpg" alt="">
+   <img src="https://wallpaper-house.com/data/out/7/wallpaper2you_191366.jpg" alt="">
+   
+   <div class="modal-box">
+        <div class="modal">
+                <div style="border-bottom:1px solid rgb(224, 224, 224);padding-bottom: 10px;">Caution - Message is aborted.</div>
+                <div style="margin-top: 10px;">This is not permitted. This is not permitted This is not permitted This is not permitted This is not permitted This is not permittedThis is not permitted This is not permitted This is not permitted This is not permittedv</div>
+            </div>
+   </div>
+  
+</body>
+<script>
+    var signal = false;
+    $(".button").click(function(e) {
+        e.stopPropagation;
+        
+        $(".modal-box").css({"display":"flex"});
+        $("body").css({'overflow':'hidden'});
+        signal = true;
+        console.log("dd")
+    });
+    $(".modal-box").click(function (e) {
+        $(".modal-box").css({"display":"none"});
+        $("body").css({'overflow':'scroll'});
+        e.stopPropagation
+    });
+</script>
+</html>
