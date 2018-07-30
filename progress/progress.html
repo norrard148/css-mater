@@ -90,7 +90,8 @@
                 if (index <1000) {
                     index +=2;
                     charge_gaze += 0.002;
-                    $(".int").html(`${Math.ceil(charge_gaze*100)}%`);
+                    $(".int").html(`${Math.floor(charge_gaze*100)}%`);
+                    $(".button").html('Click To Stop Charging!');
                     $(".progress-situation").css({"width": `${index}px`});
                 } else {
                     $(".in").html("Charged!");
@@ -98,11 +99,12 @@
                     clearInterval(charging_machine);
                    
                 }
-            }, 50);
+            }, 30);
         } else {
             if (index <1000) {
                 charging = false;
-                console.log("Stop charging!")
+
+                $(".button").html('Click To Charge Battery!');
                 $("#loading-image").css({'display':'none'});
                 $(".in").html("Stop Charging");
                 clearInterval(charging_machine);
