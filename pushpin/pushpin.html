@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-weight: 200;
+    }
+    body, html {
+        height: 100%;
+        width: 100%;
+    }
+    .box {
+        height: 100%;
+        width: 100%;
+    }
+    .block {
+        width: 100%;
+        height: 100%;
+        position:relative;
+        top:0;
+    }
+  
+    .one {
+    
+        background-color: rgb(248, 240, 255);
+    }
+    .two {
+        
+        background-color: rgb(225, 223, 255);
+    }
+    .three {
+        
+        background-color: rgb(252, 255, 245);
+    }
+    img {
+        width: 100%;
+        height: auto;
+        position:absolute;
+        top: 0;
+        z-index: 0;
+    }
+    h1 {
+        z-index: 999;
+        color: white;
+        position:absolute;
+    }
+</style>
+<body>
+    <div class="box">
+        <div class="block one">
+                <h1>First</h1>
+                <img src="http://www.city.kr/files/attach/images/1326/542/186/010/9bbd68054422876eb730b296963d0e82.jpg" alt="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="block two">
+                <h1>Second</h1>
+                <img src="https://avatars.mds.yandex.net/get-pdb/214908/4644482f-14f4-4a67-8d8e-3c4443c29e46/s1200" alt="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="block three">
+                <h1>Third</h1>
+                <img src="https://wallpaper-house.com/data/out/7/wallpaper2you_191366.jpg" alt="">
+        </div>
+    </div>
+
+</body>
+<script>
+    var scroll_position;
+    var scroll_page = 1;
+    var ss = $(window).height();
+    $(window).ready(function () {
+        $("body").css({"height":`${ss}`});
+    })
+
+    $(window).scroll(function() {
+        scroll_position =  $(window).scrollTop() + ss;
+        if (scroll_position > ss && scroll_position < ss*2) {
+            $(".one").css({"position":"fixed"});
+            $(".two").css({"position":"relative"});
+            $(".three").css({"position":"relative"});
+        } else if (scroll_position >= ss*2 && scroll_position < ss*3) {
+            $(".two").css({"position":"fixed"});
+            $(".three").css({"position":"relative"});
+        } else if (scroll_position >= ss*3) {
+            $(".two").css({"position":"fixed"});
+            $(".three").css({"position":"fixed"});
+        }
+    })
+
+    
+</script>
+</html>
