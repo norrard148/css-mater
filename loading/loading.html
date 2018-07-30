@@ -19,7 +19,7 @@
     #loading { 
      width: 100%;  
      height: 100%;  
-     top: 400px; 
+     top: 0px; 
      left: 0px; 
      position: fixed;  
      display: block;  
@@ -30,13 +30,13 @@
     }  
       
     #loading-image {  
-        width: 100px;
-        height: 100px;
-     top: 400px;   
-     left: auto; 
-     z-index: 100; 
+    width: 100px;
+    height: 100px;   
+    position: relative;
+    left: auto; 
+    z-index: 100; 
     } 
-    .img {
+    .img, .start-img{
         width: 500px;
         height: auto;
     }
@@ -44,13 +44,13 @@
 <body>
        
 
-    <img class="img" src="http://cphoto.asiae.co.kr/listimglink/6/2017081710452545750_3.jpg"/>
-    <img class="img" src="http://cphoto.asiae.co.kr/listimglink/6/2017081710452545750_3.jpg"/>
-    <img class="img" src="http://cphoto.asiae.co.kr/listimglink/6/2017081710452545750_3.jpg"/>
-    <img class="img" src="http://cphoto.asiae.co.kr/listimglink/6/2017081710452545750_3.jpg"/>
-    <img class="img" src="http://cphoto.asiae.co.kr/listimglink/6/2017081710452545750_3.jpg"/>
+    <img class="start-img" src="http://cphoto.asiae.co.kr/listimglink/6/2017081710452545750_3.jpg"/>
+    <img class="start-img" src="http://cphoto.asiae.co.kr/listimglink/6/2017081710452545750_3.jpg"/>
+    <img class="start-img" src="http://cphoto.asiae.co.kr/listimglink/6/2017081710452545750_3.jpg"/>
+    <img class="start-img" src="http://cphoto.asiae.co.kr/listimglink/6/2017081710452545750_3.jpg"/>
+    <img class="start-img" src="http://cphoto.asiae.co.kr/listimglink/6/2017081710452545750_3.jpg"/>
     <div id="loading">
-        <img id="loading-image" src="5.gif" alt="Loading..." />    
+        <img style="top: 400px" id="loading-image" src="5.gif" alt="Loading..." />    
     </div> 
         
     
@@ -58,19 +58,17 @@
 </body>
 
 <script>  
-        $(window).ready(function() {    
-            $("#loading").hide();  
-            alert("업로드가 준비되었습니다.");
+        $(document).ready(function() {  
+            alert("document가 준비되었습니다.");  
+           
+            
         }); 
-        $('.img').on('load', function() {
-            $("#loading-image").hide(); 
-           })
-           img = new Image();
-           img.src = "http://cphoto.asiae.co.kr/listimglink/6/2017081710452545750_3.jpg"
-           img.onload = function () {
-               alert("uploaded!");
-         
-           }
+        $(window).ready(function() {  
+            alert("winodw가 준비되었습니다.");  
+            $("#loading").hide(); 
+            
+        }); 
+       
            
         $(window).scroll(function() {
             if ($(window).scrollTop() == $(document).height() - $(window).height()){
