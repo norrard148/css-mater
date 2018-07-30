@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-weight: 200;
+    }
+    body, html {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    .progress {
+        width: 1000px;
+        height: 25px;
+        border-radius: 6px;
+        background-color: rgb(233, 233, 233);
+        overflow: hidden;
+    }
+    .progress-situation {
+        width: 0px;
+        height: 100%;
+        background-color: rgb(87, 87, 255);
+    }
+    .button {
+        width: 220px;
+        height: 40px;
+        background-color: rgb(54, 32, 107);
+        border: 1px solid grey;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        color:white;
+    }
+</style>
+<body>
+    <div class="button">Click To Charge Battery!</div>
+    <div class="progress">
+        <div class="progress-situation">
+
+        </div>
+    </div>
+</body>
+<script>
+    var index=0;
+    var charging = false;
+    var charging_machine;
+    $(".button").click(function(e) {
+        e.stopPropagation;
+        if (charging === false) {
+            charging = true;
+            console.log("Start charging");
+            charging_machine = setInterval(function () {
+                index +=2;
+                $(".progress-situation").css({"width": `${index}px`});
+            }, 50);
+        } else {
+            charging = false;
+            console.log("Stop charging!")
+            clearInterval(charging_machine);
+        }
+        
+    });
+</script>
+</html>
