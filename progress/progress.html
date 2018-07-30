@@ -70,12 +70,14 @@
     </div>
       
     <h1 class="in"></h1>
+    <h1 class="int"></h1>
     <img style="top: 400px" id="loading-image" src="5.gif" alt="Loading..." /> 
 </body>
 <script>
     var index=0;
     var charging = false;
     var charging_machine;
+    var charge_gaze = 0;
     $(".button").click(function(e) {
         e.stopPropagation;
         if (charging === false) {
@@ -87,6 +89,8 @@
             charging_machine = setInterval(function () {
                 if (index <1000) {
                     index +=2;
+                    charge_gaze += 0.002;
+                    $(".int").html(`${Math.ceil(charge_gaze*100)}%`);
                     $(".progress-situation").css({"width": `${index}px`});
                 } else {
                     $(".in").html("Charged!");
